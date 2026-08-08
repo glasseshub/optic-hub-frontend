@@ -13,18 +13,25 @@ extracted folder into "Add file → Upload files", or use `git push`).
 You do **not** need to run anything locally — no Node.js install required.
 Vercel builds it in the cloud in the next step.
 
-## 2. Deploy on Vercel (free, gives you an HTTPS URL)
+## 2. Deploy on Railway (same as the backend)
 
-1. Go to https://vercel.com and sign in with your GitHub account.
-2. **Add New → Project**, pick the `optic-hub-frontend` repo.
-3. Vercel auto-detects it's a Vite project — leave all settings as
-   default and click **Deploy**.
-4. In ~1 minute you'll get a URL like
-   `https://optic-hub-frontend.vercel.app` — that's your Mini App's
-   public address. Open it in a browser first to confirm it loads.
+1. In Railway: **New Project → Deploy from GitHub repo**, pick the
+   `optic-hub-frontend` repo.
+2. Railway auto-detects it's a Node project via `package.json`, runs
+   `npm install`, then `npm run build` (thanks to the `build` script),
+   then starts it with `npm run start` (from the `Procfile`) — no manual
+   configuration needed.
+3. Once it's deployed, go to the service's **Settings → Networking** tab
+   and click **Generate Domain**. Railway doesn't expose a public URL by
+   default the way Vercel does — this button is the one extra step.
+4. You'll get a URL like `https://optic-hub-frontend-production.up.railway.app`
+   — that's your Mini App's public address. Open it in a browser first to
+   confirm it loads.
 
-(Netlify works the same way if you'd rather use that — "Add new site →
-Import from Git", same auto-detect.)
+(If you'd rather use Vercel instead — sign in at vercel.com with GitHub,
+Add New → Project, import this repo, click Deploy. It auto-detects Vite
+and needs zero configuration, including the public URL. Either platform
+works equally well; use whichever is less friction for you.)
 
 ## 3. Point your Telegram bot at it
 
